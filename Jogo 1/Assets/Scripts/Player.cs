@@ -22,7 +22,7 @@ public class Player : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         Move();
         Jump();
@@ -78,6 +78,11 @@ public class Player : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.layer == 6)
+        {
+            isJumping = false;
+            anim.SetBool("Pulando",false);
+        }
+        if (collision.gameObject.tag == "Spikes")
         {
             isJumping = false;
             anim.SetBool("Pulando",false);
