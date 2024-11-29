@@ -10,6 +10,7 @@ public class Player : MonoBehaviour
 
     public bool isJumping;
     public bool doubleJump;
+    
 
     private Rigidbody2D rig;
     private Animator anim;
@@ -55,20 +56,22 @@ public class Player : MonoBehaviour
     {
         if (Input.GetButtonDown("Jump"))
         {
-            if (!isJumping)
+            if (isJumping == false)
             {
                 rig.AddForce(new Vector2(0f, JumpForce), ForceMode2D.Impulse);
                 doubleJump = true;
                 anim.SetBool("Pulando",true);
+                isJumping = true;
                 
             }
             else
             {
                 if (doubleJump)
                 {
-                    rig.AddForce(new Vector2(0f, JumpForce), ForceMode2D.Impulse);
+                    rig.velocity = Vector2.up * JumpForce;
                     doubleJump = false;
                 }
+                  
             }
         }
 
@@ -81,19 +84,13 @@ public class Player : MonoBehaviour
         {
             isJumping = false;
             anim.SetBool("Pulando",false);
+            doubleJump = false;
         }
+    
         if (collision.gameObject.tag == "Spikes")
         {
             isJumping = false;
             anim.SetBool("Pulando",false);
-        }
-    }
-
-    private void OnCollisionExit2D(Collision2D collision)
-    {
-        if (collision.gameObject.layer == 6)
-        {
-            isJumping = true;
         }
     }
 }
