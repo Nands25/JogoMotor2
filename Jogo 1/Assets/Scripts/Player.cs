@@ -61,7 +61,7 @@ public class Player : MonoBehaviour
                 rig.AddForce(new Vector2(0f, JumpForce), ForceMode2D.Impulse);
                 doubleJump = true;
                 anim.SetBool("Pulando",true);
-                //isJumping = true;
+            
                 
             }
             else
@@ -69,6 +69,9 @@ public class Player : MonoBehaviour
                 if (doubleJump)
                 {
                     rig.velocity = Vector2.up * JumpForce;
+                    anim.SetBool("Jump", false);
+                    anim.SetBool("DoubleJump",true);
+
                     doubleJump = false;
                 }
                   
@@ -85,13 +88,20 @@ public class Player : MonoBehaviour
             isJumping = false;
             doubleJump = false;
             anim.SetBool("Pulando",false);
+            anim.SetBool("DoubleJump",false);
         
         }
     
         if (collision.gameObject.tag == "Spikes")
         {
-            isJumping = false;
-            anim.SetBool("Pulando",false);
+            GameController.instance.ShowGameOver();
+            Destroy(gameObject);
+        }
+
+        if (collision.gameObject.tag == "Saw")
+        {
+            GameController.instance.ShowGameOver();
+            Destroy(gameObject);
         }
     }
 

@@ -23,10 +23,12 @@ public class FallingPlataform : MonoBehaviour
         {
             Invoke("Falling", fallingTime);
         }
+
+
     }
     void OnTriggerEnter2D(Collider2D collider)
     {
-        if (collider.gameObject.layer == 7)
+        if (collider.gameObject.layer == 8)
         {
             Destroy(gameObject);
 
