@@ -23,7 +23,7 @@ public class Player : MonoBehaviour
     }
 
     // Update is called once per frame
-    void FixedUpdate()
+    void Update()
     {
         Move();
         Jump();
@@ -56,12 +56,12 @@ public class Player : MonoBehaviour
     {
         if (Input.GetButtonDown("Jump"))
         {
-            if (isJumping == false)
+            if (!isJumping)
             {
                 rig.AddForce(new Vector2(0f, JumpForce), ForceMode2D.Impulse);
                 doubleJump = true;
                 anim.SetBool("Pulando",true);
-                isJumping = true;
+                //isJumping = true;
                 
             }
             else
@@ -83,8 +83,9 @@ public class Player : MonoBehaviour
         if (collision.gameObject.layer == 6)
         {
             isJumping = false;
-            anim.SetBool("Pulando",false);
             doubleJump = false;
+            anim.SetBool("Pulando",false);
+        
         }
     
         if (collision.gameObject.tag == "Spikes")
@@ -93,4 +94,13 @@ public class Player : MonoBehaviour
             anim.SetBool("Pulando",false);
         }
     }
+
+    void OnCollisionExit2D(Collision2D collision)
+    {
+        if(collision.gameObject.layer == 6)
+        {
+            isJumping = true;
+        }
+    }
+
 }
