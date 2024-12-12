@@ -6,15 +6,18 @@ public class FallingPlataform : MonoBehaviour
 {
     // Start is called before the first frame update
     public float fallingTime;
-
+    public float respawnTime = 5f;
     private TargetJoint2D target;
 
     private BoxCollider2D boxColl;
-    // Start is called before the first frame update
+    private Vector3 initialPosition;
+
     void Start()
     {
         target = GetComponent<TargetJoint2D>();
         boxColl = GetComponent<BoxCollider2D>();
+        initialPosition = transform.position;
+
     }
 
     void OnCollisionEnter2D(Collision2D collision)
@@ -22,8 +25,8 @@ public class FallingPlataform : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             Invoke("Falling", fallingTime);
+            Invoke("ReaparecerPlataforma", respawnTime);
         }
-
 
     }
     void OnTriggerEnter2D(Collider2D collider)
@@ -31,7 +34,6 @@ public class FallingPlataform : MonoBehaviour
         if (collider.gameObject.layer == 8)
         {
             Destroy(gameObject);
-
         }
     }
 
@@ -40,4 +42,15 @@ public class FallingPlataform : MonoBehaviour
         target.enabled = false;
         boxColl.isTrigger = true;
     }
+
+    void ReaparecerPlataforma()
+    {
+        // Reseta a posição da plataforma para a posição inicial
+        transform.position = initialPosition;
+
+        // Reativa a física e a colisão da plataforma
+        target.enabled = true;
+        boxColl.isTrigger = false;
+    }
+    
 }

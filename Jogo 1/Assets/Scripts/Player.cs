@@ -25,8 +25,11 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Move();
         Jump();
+    }
+    void FixedUpdate()
+    {
+        Move();
     }
 
     void Move()
