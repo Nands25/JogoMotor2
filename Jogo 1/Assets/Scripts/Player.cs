@@ -7,11 +7,8 @@ public class Player : MonoBehaviour
 {
     public float Speed;
     public float JumpForce;
-
     public bool isJumping;
     public bool doubleJump;
-    
-
     private Rigidbody2D rig;
     private Animator anim;
 

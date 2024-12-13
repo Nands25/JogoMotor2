@@ -15,9 +15,9 @@ GameObject:
   - component: {fileID: 8201423728165941279}
   - component: {fileID: 3243993816915489193}
   - component: {fileID: 2134196300412281118}
-  m_Layer: 7
+  m_Layer: 6
   m_Name: FallingPlataform
-  m_TagString: Untagged
+  m_TagString: Platafotm
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -77,7 +77,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 4
+  m_SortingOrder: 3
   m_Sprite: {fileID: -7184453141422777021, guid: a8be9d80391091641bb9404b3f4dd067, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -215,4 +215,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fallingTime: 0.5
-  respawnTime: 5
+  respawnTime: 2

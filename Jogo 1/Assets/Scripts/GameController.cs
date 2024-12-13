@@ -22,7 +22,7 @@ public class GameController : MonoBehaviour
     public void UpdateScoreText()
     {
         scoreText.text = totalScore.ToString();
-        if(totalScore == 120)
+        if(totalScore == 200)
         {
             ShowVictory();
         }

@@ -7,6 +7,7 @@ TagManager:
   - Ground
   - Spikes
   - Saw
+  - Platafotm
   layers:
   - Default
   - TransparentFX
